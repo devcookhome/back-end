@@ -27,25 +27,25 @@ A pesquisa de receitas poderá ser feita por nome, grupos e ingredientes.
 ### Domínio/Modelo
 
 - Recipe
-  	> name
-  	> directions
-  	> observation
-  	> portion
-  	> ingredients
+  	> name /
+  	> directions /
+  	> observation /
+  	> portion /
+  	> ingredients .
 - Ingredient
-  	> name
-  	> type
+  	> name /
+  	> type .
 - Type
- 	> name
+ 	> name 
 - Group
- 	> name
+ 	> name 
 - Portion
-	> qtd
-	> description
+	> qtd /
+	> description .
 - Direction
-	> time
-	> timeUnity
-	> description
+	> time /
+	> timeUnity /
+	> description .
 
 
 
