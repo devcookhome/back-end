@@ -36,9 +36,9 @@ A pesquisa de receitas poderá ser feita por nome, grupos e ingredientes.
   	> name /
   	> type .
 - Type
- 	> name 
+ 	> name .
 - Group
- 	> name 
+ 	> name .
 - Portion
 	> qtd /
 	> description .
