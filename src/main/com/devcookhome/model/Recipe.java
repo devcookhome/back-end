@@ -1,13 +1,15 @@
 package com.devcookhome.model;
 
+import java.util.List;
+
 public class Recipe{
 
 	private String name;
-	private String directions;
-	private String portion;
-	private String ingredients;
+	private List<Direction> directions;
+	private Portion portion;
+	private List<Ingredient> ingredients;
 
-	public void setName(){
+	public void setName(String name){
 		this.name = name;
 	}
  	
@@ -15,27 +17,27 @@ public class Recipe{
  		return this.name;
  	}
 
- 	public void setDirections(){
+ 	public void setDirections(List<Direction> directions){
  		this.directions = directions;
  	}
 
- 	public String getDirections(){
+ 	public List<Direction> getDirections(){
  		return this.directions;
  	}
 
- 	public void setPortion(){
+ 	public void setPortion(Portion portion){
  		this.portion = portion;
  	}
 
- 	public String getPortion(){
+ 	public Portion getPortion(){
  		return this.portion;
  	}
 
-	public void setIngredients(){
+	public void setIngredients(List<Ingredient> ingredients){
 		this.ingredients = ingredients;
 	}
 
-	public String getIngredients(){
+	public List<Ingredient> getIngredients(){
 		return this.ingredients;
 	}
 }
