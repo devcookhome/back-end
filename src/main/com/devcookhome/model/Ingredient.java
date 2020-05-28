@@ -1,9 +1,12 @@
 package com.devcookhome.model;
 
+import java.util.List;
+
 public class Ingredient{
 
+	private List<Type> type;
+	
 	private String name;
-	private String type;
 
 	public void setName (String name){
 		this.name = name;
@@ -11,11 +14,11 @@ public class Ingredient{
 	public String getName(){
 		return this.name;
 	}
-
-	public void setType(String type){
+	public void setType(List<Type> type){
 		this.type = type;
 	}
-	public String getType(){
+
+	public List<Type> getType(){
 		return this.type;
 	}
 }	
