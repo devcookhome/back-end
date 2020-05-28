@@ -2,14 +2,14 @@ package com.devcookhome.model;
 
 public class Direction{
 
-	private String time;
+	private Integer time;
 	private String timeUnity;
 	private String description;
 
-	public void setTime(String time){
+	public void setTime(Integer time){
 		this.time = time;
 	}
-	public String getTime(){
+	public Integer getTime(){
 		return this.time;
 	}
 
