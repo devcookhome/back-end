@@ -3,10 +3,9 @@ package com.devcookhome.model;
 import java.util.List;
 
 public class Ingredient{
-
-	private List<Type> type;
 	
 	private String name;
+	private List<Type> type;
 
 	public void setName (String name){
 		this.name = name;
