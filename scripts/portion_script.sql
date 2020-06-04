@@ -1,6 +1,6 @@
 USE dev_cookhome;
 
-DROP TABLE portion;
+DROP TABLE IF EXISTS portion;
 
 CREATE TABLE portion(
 
