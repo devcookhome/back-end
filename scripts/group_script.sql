@@ -1,6 +1,6 @@
 USE dev_cookhome;
 
-DROP TABLE group1;
+DROP TABLE IF EXISTS group1;
 
 CREATE TABLE group1 (
 
