@@ -7,4 +7,4 @@ create table direction(
 	tempo INT(10),
 	timeunity VARCHAR(50),
 	description VARCHAR(50)
-)
+);
