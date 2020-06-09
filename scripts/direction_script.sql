@@ -6,5 +6,5 @@ create table direction(
 	id INT AUTO_INCREMENT;
 	tempo INT(10),
 	timeunity VARCHAR(50),
-	description VARCHAR(50)
+	descricao VARCHAR(50)
 )
