@@ -28,6 +28,7 @@ public class ConnectionManager{
 				properties.setProperty("user", "root"); 
 				properties.setProperty("password", "1234"); 
 				properties.setProperty("MaxPooledStatements", "250"); 
+				properties.setProperty("useTimezone","false");
 				connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/dev_cookhome", properties);
 			} catch (ClassNotFoundException | SQLException e){
 				e.printStackTrace();
