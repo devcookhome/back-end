@@ -12,6 +12,7 @@ public class GroupDAOTest{
 		testSave();
 		testList();
 		testUpdate();
+		testGetById();
 		testDelete();
 
 	}
@@ -59,6 +60,19 @@ public class GroupDAOTest{
 		System.out.println("... OK");
 	}
 
+	public static void testGetById(){
+
+		System.out.print("GroupDAOTet#getById");
+
+		Long id = GroupDAO.list().get(0).getId();
+
+		Group g = GroupDAO.getById(id);
+
+		assert g.getName().equals("Carnes");
+
+		System.out.println("... OK");
+	}
+
 	public static void testDelete(){
 
 		System.out.print("GroupDAOTet#delete");
@@ -72,7 +86,5 @@ public class GroupDAOTest{
 		assert size > GroupDAO.list().size();
 
 		System.out.println("... OK");
-
-
 	}
 }

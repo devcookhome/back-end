@@ -131,4 +131,35 @@ public class GroupDAO{
             return false;
         }
     }
+
+    public static Group getById(Long id){
+        String sql = "SELECT * FROM " + TABLE + " WHERE " + FIELD_ID + " = ?";
+
+        PreparedStatement pstm = null;
+
+        try{
+
+            pstm = connection.prepareStatement(sql);
+
+            pstm.setLong(1, id);
+
+            ResultSet result = pstm.executeQuery();
+
+            Group group = null;
+
+            while(result.next()){
+                group = new Group();
+                group.setName(result.getString(FIELD_NAME));
+                group.setId(result.getLong(FIELD_ID));
+            }
+
+            pstm.close();
+            result.close();
+            return group;
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
