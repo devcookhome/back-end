@@ -1,8 +1,9 @@
 USE dev_cookhome;
 
-drop table if exists type;
+DROP TABLE IF EXISTS type;
 
-create table type(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	type VARCHAR (50)
+CREATE TABLE type (
+
+	id INT AUTO_INCREMENT PRIMARY KEY ,
+	type varchar(50)
 );
