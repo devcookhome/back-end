@@ -7,7 +7,7 @@ create table direction(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	tempo INT(10),
 	timeunity VARCHAR(50),
-	description VARCHAR(50),
+	description VARCHAR(3000),
 	recipe_id INT
 
 );
