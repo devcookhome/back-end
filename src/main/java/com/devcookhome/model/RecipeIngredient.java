@@ -2,20 +2,23 @@ package com.devcookhome.model;
 
 public class RecipeIngredient{
 
-	private Long id;
-	private String recipeIngredient;
+	private String qtd;
+	private Ingredient ingredient;
 
-	public void setId(Long id){
-		this.id = id;
+	public void setQtd(String qtd){
+		this.qtd = qtd;
 	}
-	public Long getId(){
-		return this.id;
+	public String getQtd(){
+		return this.qtd;
 	}
 
-	public void setRecipeIngredient(String recipeIngredient){
-		this.recipeIngredient = recipeIngredient;
+	public void setIngredient(Ingredient ingredient){
+		this.ingredient = ingredient;
 	}
-	public String getRecipeIngredient(){
-		return this.recipeIngredient;
+	public Ingredient getIngredient(){
+		return this.ingredient;
 	}
+
+
+
 }
