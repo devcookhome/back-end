@@ -1,16 +1,19 @@
 package com.devcookhome.model;
 
-public class Type{
+public class Type extends Entity{
 
-	private Long id;
 	private String type;
 
-	public void setId(Long id){
-		this.id = id;
+	public String getFieldName(){
+
+		return "type";
 	}
-	public Long getId(){
-		return this.id;
+
+	public String getTableName(){
+
+		return "type";
 	}
+
 
 	public void setType(String type){
 		this.type = type;
