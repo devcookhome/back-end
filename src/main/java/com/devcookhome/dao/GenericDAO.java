@@ -9,13 +9,16 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.ParameterizedType;
 
 
-public class GenericDAO{
+public class GenericDAO<T extends Entity>{
     private static final String TABLE = "group1";
     private static final String FIELD_ID = "id";
     private static final String FIELD_NAME = "name";
     private static Connection connection = ConnectionManager.getInstance().getConnection();
+
+    private T instance;
 
     public static Entity save(Entity entity){
         if(entity == null) return entity;
@@ -42,11 +45,23 @@ public class GenericDAO{
         return entity;
     }   
 
-    public static List<Group> list(){
+    @SuppressWarnings("unchecked")
+    private T newInstance(){
+        try{ 
+            return (T)((Class)((ParameterizedType)this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).newInstance();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        } return null;
+    }
 
-        String sql = "SELECT * FROM " + TABLE;
 
-        List<Group> groups = new ArrayList<Group>();
+    public List<T>  list(){  
+
+        T entity = newInstance();
+
+        String sql = "SELECT * FROM " + entity.getTableName();
+
+        List<T> list = new ArrayList<>();
 
         PreparedStatement pstm = null;
         ResultSet result = null;
@@ -60,10 +75,9 @@ public class GenericDAO{
 
             while(result.next()){
 
-                Group group = new Group();
-                group.setId(result.getLong(FIELD_ID));
-                group.setName(result.getString(FIELD_NAME));
-                groups.add(group);
+                entity.setId(result.getLong(FIELD_ID));
+                entity.setFieldValue(result.getString(entity.getFieldName()));
+                list.add(entity);
 
             }
         }catch (Exception ex) {
@@ -85,7 +99,7 @@ public class GenericDAO{
                 ex.printStackTrace();
             }
 
-            return groups;
+            return list;
         } 
     }
 
