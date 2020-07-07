@@ -1,16 +1,17 @@
 package com.devcookhome.model;
 
-public class Group{
+public class Group extends Entity{
 	
-	private Long id;
 	private String name;
+	
+	public String getFieldName(){
 
-	public void setId(Long id){
-		this.id = id;
+		return "name";
 	}
 
-	public Long getId(){
-		return this.id;
+	public String getTableName(){
+
+		return "group1";
 	}
 
 	public void setName(String name){

@@ -23,7 +23,7 @@ public class TypeDAOTest{
 		Type t = new Type();
 		t.setType("Teste");
 
-		TypeDAO.save(t);
+		GenericDAO.save(t);
 
 		assert t.getId() != null && t.getId() > 0;
 

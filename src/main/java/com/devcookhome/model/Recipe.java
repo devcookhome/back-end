@@ -7,7 +7,7 @@ public class Recipe{
 	private String name;
 	private List<Direction> directions;
 	private Portion portion;
-	private List<Ingredient> ingredients;
+	private List<RecipeIngredient> ingredients;
 
 	public void setName(String name){
 		this.name = name;
@@ -33,11 +33,11 @@ public class Recipe{
  		return this.portion;
  	}
 
-	public void setIngredients(List<Ingredient> ingredients){
+	public void setIngredients(List<RecipeIngredient> ingredients){
 		this.ingredients = ingredients;
 	}
 
-	public List<Ingredient> getIngredients(){
+	public List<RecipeIngredient> getIngredients(){
 		return this.ingredients;
 	}
 }
