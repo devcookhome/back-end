@@ -5,6 +5,8 @@ public abstract class Entity{
 	private Long id;
 	public abstract String getFieldName(); 
 	public abstract String getTableName();
+
+
 	
 	public String getFieldValue(){
 
@@ -20,6 +22,15 @@ public abstract class Entity{
 
 	public Long getId(){
 		return this.id;
+	}
+
+	public void setFieldValue(String value){
+
+		if(this instanceof Group){
+			((Group)this).setName(value);
+	 	}else{
+		 	((Type)this).setType(value); 
+	 	}
 	}
 }
 
