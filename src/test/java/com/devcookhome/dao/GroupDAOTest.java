@@ -1,5 +1,6 @@
 package com.devcookhome.dao;
 
+import com.devcookhome.model.Entity;
 import com.devcookhome.model.Group;
 import java.sql.Connection;
 import java.util.List;
@@ -24,7 +25,7 @@ public class GroupDAOTest{
 		Group g = new Group();
 		g.setName("Vegetais");
 
-		GroupDAO.save(g);
+		GenericDAO.save(g);
 
 		assert g.getId() != null && g.getId() > 0;
 
