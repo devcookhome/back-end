@@ -45,19 +45,18 @@ public class GenericDAO<T extends Entity>{
         return entity;
     }   
 
-    @SuppressWarnings("unchecked")
-    private T newInstance(){
-        try{ 
-            return (T)((Class)((ParameterizedType)this.getClass().getGenericSuperclass()).getActualTypeArguments()[0]).newInstance();
-        }catch(Exception ex){
-            ex.printStackTrace();
-        } return null;
+    private T newIntance(Class<T> clazz){
+        try{
+            return clazz.newInstance();
+        }catch(InstantiationException | IllegalAccessException ex){
+            ex.printStackTrace();            
+            return null;
+        }
     }
 
+    public List<T>  list(Class<T> clazz){  
 
-    public List<T>  list(){  
-
-        T entity = newInstance();
+        T entity = newIntance(clazz);
 
         String sql = "SELECT * FROM " + entity.getTableName();
 
@@ -78,6 +77,7 @@ public class GenericDAO<T extends Entity>{
                 entity.setId(result.getLong(FIELD_ID));
                 entity.setFieldValue(result.getString(entity.getFieldName()));
                 list.add(entity);
+                entity = newIntance(clazz);
 
             }
         }catch (Exception ex) {
