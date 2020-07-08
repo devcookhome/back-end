@@ -38,7 +38,7 @@ public class GroupDAOTest{
 
 		GenericDAO<Group> dao = new GenericDAO<>();
 
-		List<Group> groups = dao.list();
+		List<Group> groups = dao.list(Group.class);
 
 		if (groups.size() == 0){
 			throw new RuntimeException("Expected Groups size > 0 ");
