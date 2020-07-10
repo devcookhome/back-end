@@ -91,7 +91,7 @@ public class GroupDAOTest{
 		Group g = groups.get(0);
 		Integer size = groups.size();
 
-		assert GroupDAO.delete(g);
+		assert dao.delete(g);
 		assert size > dao.list(Group.class).size();
 
 		System.out.println("... OK");
