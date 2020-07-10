@@ -16,52 +16,6 @@ public class GroupDAO{
     private static Connection connection = ConnectionManager.getInstance().getConnection();
 
 
-    public static List<Group> list(){
-
-        String sql = "SELECT * FROM " + TABLE;
-
-        List<Group> groups = new ArrayList<Group>();
-
-        PreparedStatement pstm = null;
-        ResultSet result = null;
-
-        try {
-
-            pstm = connection.prepareStatement(sql);
-
-            result = pstm.executeQuery();
-
-
-            while(result.next()){
-
-                Group group = new Group();
-                group.setId(result.getLong(FIELD_ID));
-                group.setName(result.getString(FIELD_NAME));
-                groups.add(group);
-
-            }
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }finally{
-
-            try{
-
-                if(result != null){
-                    result.close();
-                }
-
-                if(pstm != null){
-                    pstm.close();
-                }
-
-
-            }catch(Exception ex){
-                ex.printStackTrace();
-            }
-
-            return groups;
-        } 
-    }
 
     public static Boolean update(Group group){
 
