@@ -51,12 +51,14 @@ public class GroupDAOTest{
 
 		System.out.print("GroupDAOTest#update");
 
-		List<Group> groups = GroupDAO.list();
+		GenericDAO<Group> dao = new GenericDAO<>();
+
+		List<Group> groups = dao.list(Group.class);
 
 		Group g = groups.get(0);
 		g.setName("Carnes");
 
-		Boolean b = GroupDAO.update(g);
+		Boolean b = dao.update(g);
 
 		assert b;
 
