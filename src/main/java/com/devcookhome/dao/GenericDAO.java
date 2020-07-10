@@ -103,9 +103,9 @@ public class GenericDAO<T extends Entity>{
         } 
     }
 
-    public static Boolean update(Group group){
+    public Boolean update(T entity){
 
-        String sql = "UPDATE " + TABLE + " SET " + FIELD_NAME + " = ? WHERE " + FIELD_ID + " = ?";
+        String sql = "UPDATE " + entity.getTableName() + " SET " + entity.getFieldName() + " = ? WHERE " + FIELD_ID + " = ?";
 
         PreparedStatement pstm = null;
         
@@ -113,8 +113,8 @@ public class GenericDAO<T extends Entity>{
 
             pstm = connection.prepareStatement(sql);
 
-            pstm.setString(1, group.getName());
-            pstm.setLong(2, group.getId());
+            pstm.setString(1, entity.getFieldValue());
+            pstm.setLong(2, entity.getId());
 
             pstm.execute();
             pstm.close();
