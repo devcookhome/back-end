@@ -73,7 +73,7 @@ public class GroupDAOTest{
 
 		Long id = dao.list(Group.class).get(0).getId();
 
-		Group g = dao.getById(id);
+		Group g = dao.getById(id, Group.class);
 
 		assert g.getName().equals("Carnes");
 
