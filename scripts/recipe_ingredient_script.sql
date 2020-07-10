@@ -6,7 +6,7 @@ CREATE TABLE recipe_ingredient(
 	
 	recipe_id INT(6) NOT NULL,
 	ingredient_id INT(6) NOT NULL,
-	qtd VARCHAR(50),
+	qtd VARCHAR(50)
 
 		
 );
