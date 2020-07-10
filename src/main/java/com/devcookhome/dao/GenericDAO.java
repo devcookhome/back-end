@@ -126,9 +126,9 @@ public class GenericDAO<T extends Entity>{
         }
     }
 
-    public static Boolean delete(Group group){
+    public Boolean delete(T entity){
 
-        String sql = "DELETE FROM " + TABLE + " WHERE " + FIELD_ID + " = ?";
+        String sql = "DELETE FROM " + entity.getTableName() + " WHERE " + FIELD_ID + " = ?";
 
         PreparedStatement pstm = null;
 
@@ -136,7 +136,7 @@ public class GenericDAO<T extends Entity>{
 
             pstm = connection.prepareStatement(sql);
 
-            pstm.setLong(1, group.getId());
+            pstm.setLong(1, entity.getId());
 
             pstm.execute();
             pstm.close();
