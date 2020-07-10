@@ -69,9 +69,11 @@ public class GroupDAOTest{
 
 		System.out.print("GroupDAOTet#getById");
 
-		Long id = GroupDAO.list().get(0).getId();
+		GenericDAO<Group> dao = new GenericDAO<>();
 
-		Group g = GroupDAO.getById(id);
+		Long id = dao.list(Group.class).get(0).getId();
+
+		Group g = dao.getById(id);
 
 		assert g.getName().equals("Carnes");
 
@@ -82,13 +84,15 @@ public class GroupDAOTest{
 
 		System.out.print("GroupDAOTet#delete");
 
-		List<Group> groups = GroupDAO.list();
+		GenericDAO<Group> dao = new GenericDAO<>();
+
+		List<Group> groups = dao.list(Group.class);
 
 		Group g = groups.get(0);
 		Integer size = groups.size();
 
 		assert GroupDAO.delete(g);
-		assert size > GroupDAO.list().size();
+		assert size > dao.list(Group.class).size();
 
 		System.out.println("... OK");
 	}
