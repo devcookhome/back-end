@@ -67,7 +67,7 @@ public class GroupDAOTest{
 
 	public static void testGetById(){
 
-		System.out.print("GroupDAOTet#getById");
+		System.out.print("GroupDAOTest#getById");
 
 		GenericDAO<Group> dao = new GenericDAO<>();
 
@@ -82,7 +82,7 @@ public class GroupDAOTest{
 
 	public static void testDelete(){
 
-		System.out.print("GroupDAOTet#delete");
+		System.out.print("GroupDAOTest#delete");
 
 		GenericDAO<Group> dao = new GenericDAO<>();
 

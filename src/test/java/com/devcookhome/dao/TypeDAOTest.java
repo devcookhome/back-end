@@ -12,7 +12,9 @@ public class TypeDAOTest{
 		testSave();
 		testList();
 		testUpdate();
+		testGetById();
 		testDelete();
+
 
 	}
 
@@ -34,7 +36,9 @@ public class TypeDAOTest{
 
 		System.out.print("TypeDAOTest#list");
 
-		List<Type> types = TypeDAO.list();
+		GenericDAO<Type> dao = new GenericDAO<>();
+
+		List<Type> types = dao.list(Type.class);
 
 		if (types.size() == 0){
 			throw new RuntimeException("Expected Types size > 0 ");
@@ -47,12 +51,14 @@ public class TypeDAOTest{
 
 		System.out.print("TypeDAOTest#update");
 
-		List<Type> types = TypeDAO.list();
+		GenericDAO<Type> dao = new GenericDAO<>();
+
+		List<Type> types = dao.list(Type.class);
 
 		Type t = types.get(0);
 		t.setType("Teste Update");
 
-		Boolean b = TypeDAO.update(t);
+		Boolean b = dao.update(t);
 
 		assert b;
 
@@ -61,18 +67,35 @@ public class TypeDAOTest{
 
 	public static void testDelete(){
 
-		System.out.print("TypeDAOTet#delete");
+		System.out.print("TypeDAOTest#delete");
 
-		List<Type> types = TypeDAO.list();
+		GenericDAO<Type> dao = new GenericDAO<>();
+
+		List<Type> types = dao.list(Type.class);
 
 		Type t = types.get(0);
 		Integer size = types.size();
 
-		assert TypeDAO.delete(t);
-		assert size > TypeDAO.list().size();
+		assert dao.delete(t);
+		assert size > dao.list(Type.class).size();
 
 		System.out.println("... OK");
 
 
+	}
+
+	public static void testGetById(){
+
+		System.out.print("TypeDAOTest#getById");
+
+		GenericDAO<Type> dao = new GenericDAO<>();
+
+		Long id = dao.list(Type.class).get(0).getId();
+
+		Type t = dao.getById(id, Type.class);
+
+		assert t.getType().equals("Teste Update");
+
+		System.out.println("... OK");
 	}
 }
