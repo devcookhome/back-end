@@ -18,12 +18,12 @@ public class GroupHandler implements HttpHandler {
 	}
 	private String getResponse(){
  
-		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Grupos</h1><ul>";
+		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><div><header><nav><a href=\"grupos/novo\">Novo Grupo</a></nav></header></div><h1>Grupos</h1><ul>";
 		List<Group> groups = new GenericDAO<Group>().list(Group.class);
 		for(Group g:groups){
 			response += "<li>" + g.getName() + "</li>";
 		}
-		response += "</ul></body></html>";
+		response += "</ul><input type=\"button\" value=\"Voltar\" onClick=\"history.go(-1)\"></body></html>";
 
 		return response;
 	}
