@@ -1,28 +1,30 @@
 package com.devcookhome.dao;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import com.devcookhome.model.Type;
 import java.sql.Connection;
 import java.util.List;
 
-public class TypeDAOTest{
+public class TypeDAOTest extends TestCase{
 
-	
-	public static void main(String[] args) {
-	
-		testSave();
-		testList();
-		testUpdate();
-		testGetById();
-		testDelete();
+	 public void setUp() {
+    	Type t = new Type();
+		
+		t.setType("Teste");
 
+		GenericDAO.save(t);
 
-	}
+		System.out.println("... Setup OK");
+    }
 
-	public static void testSave(){
+	public void testSave(){
 
 		System.out.print("TypeDAOTest#save");
 
 		Type t = new Type();
+		
 		t.setType("Teste");
 
 		GenericDAO.save(t);
@@ -32,7 +34,7 @@ public class TypeDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testList(){
+	public void testList(){
 
 		System.out.print("TypeDAOTest#list");
 
@@ -47,7 +49,7 @@ public class TypeDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testUpdate(){
+	public void testUpdate(){
 
 		System.out.print("TypeDAOTest#update");
 
@@ -65,7 +67,7 @@ public class TypeDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testDelete(){
+	public void testDelete(){
 
 		System.out.print("TypeDAOTest#delete");
 
@@ -84,7 +86,7 @@ public class TypeDAOTest{
 
 	}
 
-	public static void testGetById(){
+	public void testGetById(){
 
 		System.out.print("TypeDAOTest#getById");
 

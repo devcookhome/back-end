@@ -1,24 +1,27 @@
 package com.devcookhome.dao;
 
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import com.devcookhome.model.Entity;
 import com.devcookhome.model.Group;
 import java.sql.Connection;
 import java.util.List;
 
-public class GroupDAOTest{
 
-	
-	public static void main(String[] args) {
-	
-		testSave();
-		testList();
-		testUpdate();
-		testGetById();
-		testDelete();
+public class GroupDAOTest extends TestCase{
 
-	}
+    public void setUp() {
+    	Group g = new Group();
+		
+		g.setName("Vegetais");
 
-	public static void testSave(){
+		GenericDAO.save(g);
+
+		System.out.println("... Setup OK");
+    }
+
+	public void testSave(){
 
 		System.out.print("GroupDAOTest#save");
 
@@ -32,7 +35,8 @@ public class GroupDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testList(){
+	public void testList(){
+
 
 		System.out.print("GroupDAOTest#list");
 
@@ -47,7 +51,8 @@ public class GroupDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testUpdate(){
+	public void testUpdate(){
+
 
 		System.out.print("GroupDAOTest#update");
 
@@ -65,7 +70,8 @@ public class GroupDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testGetById(){
+	public void testGetById(){
+
 
 		System.out.print("GroupDAOTest#getById");
 
@@ -80,7 +86,8 @@ public class GroupDAOTest{
 		System.out.println("... OK");
 	}
 
-	public static void testDelete(){
+	public void testDelete(){
+
 
 		System.out.print("GroupDAOTest#delete");
 
