@@ -88,6 +88,8 @@ public class TypeDAOTest extends TestCase{
 
 	public void testGetById(){
 
+		testUpdate();
+
 		System.out.print("TypeDAOTest#getById");
 
 		GenericDAO<Type> dao = new GenericDAO<>();

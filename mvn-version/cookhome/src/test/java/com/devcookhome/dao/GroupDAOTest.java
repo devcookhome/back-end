@@ -72,6 +72,7 @@ public class GroupDAOTest extends TestCase{
 
 	public void testGetById(){
 
+		testUpdate();
 
 		System.out.print("GroupDAOTest#getById");
 
