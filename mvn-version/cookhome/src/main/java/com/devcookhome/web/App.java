@@ -18,6 +18,7 @@ public class App {
         server.createContext("/grupos/novo", newGroupHandler);
         server.createContext("/groups/novo", newGroupHandler);
         server.createContext("/groups/novo/sucess", newGroupSucessHandler);
+        server.createContext("/grupos/novo/sucess", newGroupSucessHandler);
         server.setExecutor(null);
         server.start();
     }

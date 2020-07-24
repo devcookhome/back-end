@@ -23,9 +23,9 @@ public class NewGroupHandler implements HttpHandler {
             String name = part1.split("=")[1];
             Group g = new Group();
             g.setName(name);
-            String response = GenericDAO.save(g).getId() !=null ? "Sucess" : "Error";
-
-			t.sendResponseHeaders(200, response.length());
+            String response = GenericDAO.save(g).getId() !=null ? "/grupos/novo/sucess" : "/grupos/novo?error=true";
+            t.getResponseHeaders().set("Location", response);
+			t.sendResponseHeaders(302, response.length());
 			OutputStream os = t.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -33,7 +33,7 @@ public class NewGroupHandler implements HttpHandler {
 		else {
 
 			String response = getResponse();
-			t.sendResponseHeaders(200, response.length());
+			t.sendResponseHeaders(302, response.length());
 			OutputStream os = t.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -41,8 +41,8 @@ public class NewGroupHandler implements HttpHandler {
 	}
 	private String getResponse(){
  
-		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Criar novo grupo</h1><form action='/groups/novo' method='post'><label for=\"name\">Digite o nome do novo grupo:</label><input type=\"text\" name=\"name\">";
-		response += "<input type=\"submit\" name=\"create\" value=\"Criar\"><input type=\"button\" value=\"Cancelar\" onClick=\"history.go(-1)\"></form></body></html>";
+		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Criar novo grupo</h1><p id='error'><form action='/grupos/novo' method='post'><label for=\"name\">Digite o nome do novo grupo:</label><input type=\"text\" name=\"name\">";
+		response += "<input type=\"submit\" name=\"create\" value=\"Criar\"></p><input type=\"button\" value=\"Cancelar\" onClick=\"history.go(-1)\"></form></body><script type='text/javascript'>function lerUrl(){var url = window.location.href;newUrl = url.split('?') [1];if (document.getElementById('error') === newUrl) {alert('Erro ao tentar adicionar novo grupo')}</script></html>";
 		return response;
 	}
 }
