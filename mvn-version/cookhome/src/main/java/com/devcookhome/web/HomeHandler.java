@@ -15,7 +15,7 @@ public class HomeHandler implements HttpHandler {
 	}
 	private String getResponse(){
  
-		return "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Bem vindo ao CookHome</h1></body></html>";
+		return "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Bem vindo ao CookHome</h1><div><header><nav><a href=\"grupos\">Grupos</a></nav></header></div></body></html>";
 
 	}
 }
