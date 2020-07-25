@@ -8,13 +8,21 @@ import javax.persistence.GenerationType;
 @javax.persistence.Entity(name = "type")
 public class Type extends Entity{
 
-	@Column(nullable = false)
-	private String type;
-	
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(nullable = false)
+	private String type;
+	
+	public void setId(Long id){
+		this.id = id;
+	}
+
+	public Long getId(){
+		return this.id;
+	}
 
 	public String getFieldName(){
 

@@ -11,8 +11,8 @@ import java.util.List;
 
 public class GroupDAOTest extends TestCase{
 
-    public void setUp() {
-    	Group g = new Group();
+	public void setUp() {
+		Group g = new Group();
 		
 		g.setName("Vegetais");
 
@@ -21,9 +21,7 @@ public class GroupDAOTest extends TestCase{
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-
-		System.out.println("... Setup OK");
-    }
+	}
 
 	public void testSave(){
 
@@ -35,9 +33,7 @@ public class GroupDAOTest extends TestCase{
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-
 	}
-
 
 	public void testUpdate(){
 
@@ -52,13 +48,9 @@ public class GroupDAOTest extends TestCase{
 		Group result = dao.saveAndUpdate(g);
 
 		assertEquals("Carnes",result.getName());
-
 	}
 
-	/*public void testList(){
-
-
-		System.out.print("GroupDAOTest#list");
+	public void testList(){
 
 		GenericDAO<Group> dao = new GenericDAO<>();
 
@@ -67,9 +59,8 @@ public class GroupDAOTest extends TestCase{
 		if (groups.size() == 0){
 			throw new RuntimeException("Expected Groups size > 0 ");
 		}
-
-		System.out.println("... OK");
-	}*/
+		assertTrue(groups.get(0).getId() != null);
+	}
 
 	public void testGetById(){
 
@@ -79,14 +70,9 @@ public class GroupDAOTest extends TestCase{
 
 		Long id = dao.list(Group.class).get(0).getId();
 
-		System.out.println("ID " + id);
-
 		Group g = dao.getById(id, Group.class);
 
-		System.out.println("************ \n" + g.getName() + id + "\n************" );
-
 		assertEquals("Carnes",g.getName());
-
 	}
 
 	public void testDelete(){

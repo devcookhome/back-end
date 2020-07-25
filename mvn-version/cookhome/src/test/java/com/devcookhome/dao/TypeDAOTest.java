@@ -19,8 +19,6 @@ public class TypeDAOTest extends TestCase{
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-
-		System.out.println("... Setup OK");
     }
 
 	public void testSave(){
@@ -32,41 +30,50 @@ public class TypeDAOTest extends TestCase{
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}
-
-		System.out.println("... OK");
 	}
 
 	public void testUpdate(){
-		
-		Type t = new Type();
-		t.setType("Teste Update");
-		try{
-			new GenericDAO<Type>().saveAndUpdate(t);
-		}catch (Exception ex){
-			ex.printStackTrace();
-		}
-
-		System.out.println("... OK");
-	}
-
-	/*public void testList(){
-
-		System.out.print("TypeDAOTest#list");
 
 		GenericDAO<Type> dao = new GenericDAO<>();
 
 		List<Type> types = dao.list(Type.class);
 
-		if (types.size() == 0){
-			throw new RuntimeException("Expected Types size > 0 ");
+		Type t = types.get(0);
+
+		t.setType("Teste Update");
+
+		Type result = dao.saveAndUpdate(t);
+
+		assertEquals("Teste Update",result.getType());
+	}
+
+	public void testList(){
+
+	GenericDAO<Type> dao = new GenericDAO<>();
+
+	List<Type> types = dao.list(Type.class);
+
+	if (types.size() == 0){
+		throw new RuntimeException("Expected Types size > 0 ");
 		}
+		assertTrue(types.get(0).getId() != null);
+	}
 
-		System.out.println("... OK");
-	}*/
 
-	/*public void testExcluir(){
+	public void testGetById(){
 
-		System.out.print("TypeDAOTest#delete");
+		testUpdate();
+
+		GenericDAO<Type> dao = new GenericDAO<>();
+
+		Long id = dao.list(Type.class).get(0).getId();
+
+		Type t = dao.getById(id, Type.class);
+
+		assertEquals("Teste Update",t.getType());
+	}
+	
+	public void testDelete(){
 
 		GenericDAO<Type> dao = new GenericDAO<>();
 
@@ -75,32 +82,8 @@ public class TypeDAOTest extends TestCase{
 		Type t = types.get(0);
 		Integer size = types.size();
 
-		//assert dao.excluir(t);
-		//assert size > dao.list(Type.class).size();
-		try{
-			new GenericDAO<Type>().excluir(t);
-		}catch (Exception ex){
-			ex.printStackTrace();
-		}
-
-		System.out.println("... OK");
-
-	}*/
-
-	public void testGetById(){
-
-		testSave();
-
-		System.out.print("TypeDAOTest#getById");
-
-		GenericDAO<Type> dao = new GenericDAO<>();
-
-		Long id = dao.list(Type.class).get(0).getId();
-
-		Type t = dao.getById(id, Type.class);
-
-		assert t.getType().equals("Teste Update");
-
-		System.out.println("... OK");
+		assert dao.delete(t.getId(), Type.class);
+		assert size > dao.list(Type.class).size();
 	}
+
 }

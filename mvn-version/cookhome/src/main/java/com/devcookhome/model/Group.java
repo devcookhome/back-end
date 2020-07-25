@@ -7,15 +7,22 @@ import javax.persistence.GenerationType;
 
 @javax.persistence.Entity(name = "group1")
 public class Group extends Entity{
-	
-	@Column(nullable = false)
-	private String name;
-	
+
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
+	private String name;
+
+	public void setId(Long id){
+		this.id = id;
+	}
+
+	public Long getId(){
+		return this.id;
+	}	
 	
 	public String getFieldName(){
 
@@ -34,5 +41,7 @@ public class Group extends Entity{
 	public String getName(){
 		return this.name;
 	}
+
+
 }
 
