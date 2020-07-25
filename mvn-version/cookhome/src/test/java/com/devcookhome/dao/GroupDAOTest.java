@@ -16,26 +16,46 @@ public class GroupDAOTest extends TestCase{
 		
 		g.setName("Vegetais");
 
-		GenericDAO.save(g);
+		try{
+			new GenericDAO<Group>().saveAndUpdate(g);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 
 		System.out.println("... Setup OK");
     }
 
 	public void testSave(){
 
-		System.out.print("GroupDAOTest#save");
-
 		Group g = new Group();
 		g.setName("Vegetais");
 
-		GenericDAO.save(g);
+		try{
+			new GenericDAO<Group>().saveAndUpdate(g);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 
-		assert g.getId() != null && g.getId() > 0;
-
-		System.out.println("... OK");
 	}
 
-	public void testList(){
+
+	public void testUpdate(){
+
+		GenericDAO<Group> dao = new GenericDAO<>();
+
+		List<Group> groups = dao.list(Group.class);
+
+		Group g = groups.get(0);
+
+		g.setName("Carnes");
+
+		Group result = dao.saveAndUpdate(g);
+
+		assertEquals("Carnes",result.getName());
+
+	}
+
+	/*public void testList(){
 
 
 		System.out.print("GroupDAOTest#list");
@@ -49,48 +69,27 @@ public class GroupDAOTest extends TestCase{
 		}
 
 		System.out.println("... OK");
-	}
-
-	public void testUpdate(){
-
-
-		System.out.print("GroupDAOTest#update");
-
-		GenericDAO<Group> dao = new GenericDAO<>();
-
-		List<Group> groups = dao.list(Group.class);
-
-		Group g = groups.get(0);
-		g.setName("Carnes");
-
-		Boolean b = dao.update(g);
-
-		assert b;
-
-		System.out.println("... OK");
-	}
+	}*/
 
 	public void testGetById(){
 
 		testUpdate();
 
-		System.out.print("GroupDAOTest#getById");
-
 		GenericDAO<Group> dao = new GenericDAO<>();
 
 		Long id = dao.list(Group.class).get(0).getId();
 
+		System.out.println("ID " + id);
+
 		Group g = dao.getById(id, Group.class);
 
-		assert g.getName().equals("Carnes");
+		System.out.println("************ \n" + g.getName() + id + "\n************" );
 
-		System.out.println("... OK");
+		assertEquals("Carnes",g.getName());
+
 	}
 
 	public void testDelete(){
-
-
-		System.out.print("GroupDAOTest#delete");
 
 		GenericDAO<Group> dao = new GenericDAO<>();
 
@@ -99,9 +98,7 @@ public class GroupDAOTest extends TestCase{
 		Group g = groups.get(0);
 		Integer size = groups.size();
 
-		assert dao.delete(g);
+		assert dao.delete(g.getId(), Group.class);
 		assert size > dao.list(Group.class).size();
-
-		System.out.println("... OK");
 	}
 }

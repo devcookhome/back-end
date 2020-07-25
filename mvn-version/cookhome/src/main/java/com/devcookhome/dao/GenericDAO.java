@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.reflect.ParameterizedType;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 
 public class GenericDAO<T extends Entity>{
@@ -20,162 +23,120 @@ public class GenericDAO<T extends Entity>{
 
     private T instance;
 
-    public static Entity save(Entity entity){
-        if(entity == null) return entity;
-        //Ha outras maneiras mais elegante para concatenar strings. 
-        //Inclusive a melhor maneira é setar as variaveis em preparedStatement para evitar
-        //SQL Injections.
-        //Essa abordagem trivial está sendo utilizado com efeito didático.
-        String sql = "INSERT INTO " + entity.getTableName() + "(" + entity.getFieldName() + ") VALUES ('"
-        + entity.getFieldValue() + "');";
-        try{
-            //Prepara o objeto que exectua os comandos no banco    
-            Statement statement = connection.createStatement();
-            //Executa a instrução no banco
-            statement.executeUpdate(sql);
-            //ler último id inserido para inserir no objeto criado
-            ResultSet result = statement.executeQuery("SELECT LAST_INSERT_ID() AS lastId;");
+    private EntityManager getEntityManager() {
+        EntityManagerFactory factory = null;
+        EntityManager entityManager = null;
+        try {
+            factory = Persistence.createEntityManagerFactory("JPATest");
+            entityManager = factory.createEntityManager();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        } 
 
-            while(result.next()) {
-                entity.setId(result.getLong("lastId"));
+        return entityManager;
+    }
+
+    public T saveAndUpdate(T entity){
+        EntityManager entityManager = getEntityManager();
+
+        try {
+           entityManager.getTransaction().begin();
+
+           if(entity.getId() == null) {
+            entityManager.persist(entity);
+        } else {
+            entityManager.merge(entity);
+        }
+        entityManager.getTransaction().commit();
+    } 
+    finally { 
+        entityManager.close();
+    }return entity;
+}
+
+
+private T newInstance(Class<T> clazz){
+    try{
+        return clazz.newInstance();
+    }catch(InstantiationException | IllegalAccessException ex){
+        ex.printStackTrace();            
+        return null;
+    }
+}
+
+public List<T>  list(Class<T> clazz){  
+
+    T entity = newInstance(clazz);
+
+    String sql = "SELECT * FROM " + entity.getTableName();
+
+    List<T> list = new ArrayList<>();
+
+    PreparedStatement pstm = null;
+    ResultSet result = null;
+
+    try {
+
+        pstm = connection.prepareStatement(sql);
+
+        result = pstm.executeQuery();
+
+
+        while(result.next()){
+
+            entity.setId(result.getLong(FIELD_ID));
+            entity.setFieldValue(result.getString(entity.getFieldName()));
+            list.add(entity);
+            entity = newInstance(clazz);
+
+        }
+    }catch (Exception ex) {
+        ex.printStackTrace();
+    }finally{
+
+        try{
+
+            if(result != null){
+                result.close();
             }
+
+            if(pstm != null){
+                pstm.close();
+            }
+
+
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return entity;
-    }   
 
-    private T newIntance(Class<T> clazz){
-        try{
-            return clazz.newInstance();
-        }catch(InstantiationException | IllegalAccessException ex){
-            ex.printStackTrace();            
-            return null;
-        }
-    }
+        return list;
+    } 
+}
 
-    public List<T>  list(Class<T> clazz){  
+public Boolean delete(Long id, Class<T> clazz) {
+    EntityManager entityManager = getEntityManager();
+    try {
+        entityManager.getTransaction().begin();
+        T entity = entityManager.find(clazz, id);
+        entityManager.remove(entity);
+        entityManager.getTransaction().commit();
+        return true;
+    } catch(Exception ex){
+        return false;
+    }finally {
+      entityManager.close();
+  }
+}
 
-        T entity = newIntance(clazz);
+public T getById(Long id, Class <T> clazz) {
+    EntityManager entityManager = getEntityManager();
+    T entity = null;
+    try {
+      entity = entityManager.find(clazz, id);
+  } finally {
+      entityManager.close();
+  }
+  return entity;
+}
 
-        String sql = "SELECT * FROM " + entity.getTableName();
-
-        List<T> list = new ArrayList<>();
-
-        PreparedStatement pstm = null;
-        ResultSet result = null;
-
-        try {
-
-            pstm = connection.prepareStatement(sql);
-
-            result = pstm.executeQuery();
-
-
-            while(result.next()){
-
-                entity.setId(result.getLong(FIELD_ID));
-                entity.setFieldValue(result.getString(entity.getFieldName()));
-                list.add(entity);
-                entity = newIntance(clazz);
-
-            }
-        }catch (Exception ex) {
-            ex.printStackTrace();
-        }finally{
-
-            try{
-
-                if(result != null){
-                    result.close();
-                }
-
-                if(pstm != null){
-                    pstm.close();
-                }
-
-
-            }catch(Exception ex){
-                ex.printStackTrace();
-            }
-
-            return list;
-        } 
-    }
-
-    public Boolean update(T entity){
-
-        String sql = "UPDATE " + entity.getTableName() + " SET " + entity.getFieldName() + " = ? WHERE " + FIELD_ID + " = ?";
-
-        PreparedStatement pstm = null;
-        
-        try {
-
-            pstm = connection.prepareStatement(sql);
-
-            pstm.setString(1, entity.getFieldValue());
-            pstm.setLong(2, entity.getId());
-
-            pstm.execute();
-            pstm.close();
-            return true;
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    public Boolean delete(T entity){
-
-        String sql = "DELETE FROM " + entity.getTableName() + " WHERE " + FIELD_ID + " = ?";
-
-        PreparedStatement pstm = null;
-
-        try {
-
-            pstm = connection.prepareStatement(sql);
-
-            pstm.setLong(1, entity.getId());
-
-            pstm.execute();
-            pstm.close();
-            return true;
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-
-    public T getById(Long id, Class <T> clazz){
-        
-        T entity = newIntance(clazz);
-
-        String sql = "SELECT * FROM " + entity.getTableName() + " WHERE " + FIELD_ID + " = ?";
-
-        PreparedStatement pstm = null;
-
-        try{
-
-            pstm = connection.prepareStatement(sql);
-
-            pstm.setLong(1, id);
-
-            ResultSet result = pstm.executeQuery();
-
-            while(result.next()){
-                entity.setFieldValue(result.getString(entity.getFieldName()));
-                entity.setId(result.getLong(FIELD_ID));
-            }
-
-            pstm.close();
-            result.close();
-            return entity;
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            return null;
-        }
-    }
 }

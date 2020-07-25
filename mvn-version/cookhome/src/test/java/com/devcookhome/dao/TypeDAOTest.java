@@ -14,27 +14,42 @@ public class TypeDAOTest extends TestCase{
 		
 		t.setType("Teste");
 
-		GenericDAO.save(t);
+		try{
+			new GenericDAO<Type>().saveAndUpdate(t);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 
 		System.out.println("... Setup OK");
     }
 
 	public void testSave(){
-
-		System.out.print("TypeDAOTest#save");
-
-		Type t = new Type();
 		
+		Type t = new Type();
 		t.setType("Teste");
-
-		GenericDAO.save(t);
-
-		assert t.getId() != null && t.getId() > 0;
+		try{
+			new GenericDAO<Type>().saveAndUpdate(t);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 
 		System.out.println("... OK");
 	}
 
-	public void testList(){
+	public void testUpdate(){
+		
+		Type t = new Type();
+		t.setType("Teste Update");
+		try{
+			new GenericDAO<Type>().saveAndUpdate(t);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
+
+		System.out.println("... OK");
+	}
+
+	/*public void testList(){
 
 		System.out.print("TypeDAOTest#list");
 
@@ -47,27 +62,9 @@ public class TypeDAOTest extends TestCase{
 		}
 
 		System.out.println("... OK");
-	}
+	}*/
 
-	public void testUpdate(){
-
-		System.out.print("TypeDAOTest#update");
-
-		GenericDAO<Type> dao = new GenericDAO<>();
-
-		List<Type> types = dao.list(Type.class);
-
-		Type t = types.get(0);
-		t.setType("Teste Update");
-
-		Boolean b = dao.update(t);
-
-		assert b;
-
-		System.out.println("... OK");
-	}
-
-	public void testDelete(){
+	/*public void testExcluir(){
 
 		System.out.print("TypeDAOTest#delete");
 
@@ -78,17 +75,21 @@ public class TypeDAOTest extends TestCase{
 		Type t = types.get(0);
 		Integer size = types.size();
 
-		assert dao.delete(t);
-		assert size > dao.list(Type.class).size();
+		//assert dao.excluir(t);
+		//assert size > dao.list(Type.class).size();
+		try{
+			new GenericDAO<Type>().excluir(t);
+		}catch (Exception ex){
+			ex.printStackTrace();
+		}
 
 		System.out.println("... OK");
 
-
-	}
+	}*/
 
 	public void testGetById(){
 
-		testUpdate();
+		testSave();
 
 		System.out.print("TypeDAOTest#getById");
 

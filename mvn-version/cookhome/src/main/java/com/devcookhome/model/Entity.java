@@ -1,13 +1,21 @@
 package com.devcookhome.model;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 
 public abstract class Entity{
 	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@Column(nullable = false)
 	private Long id;
 	public abstract String getFieldName(); 
 	public abstract String getTableName();
 
 
-	
+		
 	public String getFieldValue(){
 
 		if(this instanceof Group){
