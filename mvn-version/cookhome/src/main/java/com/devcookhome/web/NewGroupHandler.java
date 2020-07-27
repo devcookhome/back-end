@@ -33,16 +33,15 @@ public class NewGroupHandler implements HttpHandler {
 		else {
 
 			String response = getResponse();
-			t.sendResponseHeaders(302, response.length());
+			t.sendResponseHeaders(200, response.length());
 			OutputStream os = t.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
 		}
 	}
 	private String getResponse(){
- 
-		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset=\"utf-8\"></head><body><h1>Criar novo grupo</h1><p id='error'><form action='/grupos/novo' method='post'><label for=\"name\">Digite o nome do novo grupo:</label><input type=\"text\" name=\"name\">";
-		response += "<input type=\"submit\" name=\"create\" value=\"Criar\"></p><input type=\"button\" value=\"Cancelar\" onClick=\"history.go(-1)\"></form></body><script type='text/javascript'>function lerUrl(){var url = window.location.href;newUrl = url.split('?') [1];if (document.getElementById('error') === newUrl) {alert('Erro ao tentar adicionar novo grupo')}</script></html>";
+
+		String response = "<!DOCTYPE html><html><head><title>CookHome</title><meta charset='utf-8'></head><body><h1>Criar novo grupo</h1><p id='error'><form action='/grupos/novo' method='post'><label for='name'>Digite o nome do novo grupo:</label><input type='text' name='name'><input type='submit' name='create' value='Criar'></p><input type='button' value='Cancelar' onClick='history.go(-1)'></form><span id='errormensage' style='color: #F00'></span></body><script type='text/javascript'>var url = location.href.indexOf('error=true')>-1;if (url) {document.getElementById('errormensage').innerHTML = 'Erro ao salvar'}</script></html>"; 
 		return response;
 	}
 }
