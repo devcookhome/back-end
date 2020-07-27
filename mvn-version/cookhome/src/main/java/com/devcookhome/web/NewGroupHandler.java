@@ -10,6 +10,9 @@ import java.util.List;
 public class NewGroupHandler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange t) throws IOException {
+		
+		GenericDAO<Group> dao = new GenericDAO<>();
+
 		if (t.getRequestMethod().equals("POST")){
 
 			StringBuilder sb = new StringBuilder();
@@ -23,7 +26,7 @@ public class NewGroupHandler implements HttpHandler {
             String name = part1.split("=")[1];
             Group g = new Group();
             g.setName(name);
-            String response = GenericDAO.save(g).getId() !=null ? "/grupos/novo/sucess" : "/grupos/novo?error=true";
+            String response = dao.saveAndUpdate(g).getId() !=null ? "/grupos/novo/sucess" : "/grupos/novo?error=true";
             t.getResponseHeaders().set("Location", response);
 			t.sendResponseHeaders(302, response.length());
 			OutputStream os = t.getResponseBody();
