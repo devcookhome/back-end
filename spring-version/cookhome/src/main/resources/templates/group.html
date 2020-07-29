@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CookHome</title>
+	<meta charset='utf-8'>
+</head>
+
+<body>
+
+	<div>
+		<header>
+			<nav>
+				<a href='newgroup.html'>Novo Grupo</a>
+			</nav>
+		</header>
+	</div>
+	<h1>Grupos</h1>
+	<ul>
+		<li>
+			<p th:text="${list}">
+		</li>
+	</ul>
+	<input type='button' value='Voltar' onClick='history.go(-1)'>
+</body>
+</html>
