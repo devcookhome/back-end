@@ -1,12 +1,12 @@
-package com.devcookhome.web;
+package com.devcookhome;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import com.devcookhome.model.GroupRepository;
 
-@Configuration
-@ComponentScan(basePackages = {"com.devcookhome.web","com.devcookhome.model"})
 @SpringBootApplication
 public class ServingWebContentApplication {
 
