@@ -6,20 +6,21 @@
 </head>
 
 <body>
-
 	<div>
 		<header>
 			<nav>
-				<a href='newgroup.html'>Novo Grupo</a>
+				<a href='/group/new'>Novo Grupo</a>
 			</nav>
 		</header>
 	</div>
 	<h1>Grupos</h1>
-	<ul>
-		<li>
-			<p th:text="${list}">
-		</li>
-	</ul>
-	<input type='button' value='Voltar' onClick='history.go(-1)'>
+	<table>
+		<th:block th:each="group : ${list}">
+			<tr>
+				<td th:text="${group.name}">...</td>
+			</tr>
+	</th:block>
+</table>
+<input type='button' value='Voltar' onClick='history.go(-1)'>
 </body>
 </html>

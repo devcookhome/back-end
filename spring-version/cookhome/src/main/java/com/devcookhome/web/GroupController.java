@@ -18,4 +18,17 @@ public class GroupController {
 		model.addAttribute("list", service.findAll());
 		return "group";
 	}
+
+	@GetMapping("/group/new")
+	public String groupNew(Model model) {
+		model.addAttribute("list", service.findAll());
+		return "newgroup";
+	}
+
+	@GetMapping("/group/new/sucess") // Se der certo sera redirecionado para este link
+	public String groupNewSucess(Model model) {
+		model.addAttribute("list", service.findAll());
+		return "newgroupsucess";
+	}
+
 }
