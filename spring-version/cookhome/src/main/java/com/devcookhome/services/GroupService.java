@@ -7,5 +7,4 @@ public interface GroupService {
     Iterable<Group> findAll();
 
     Group save(Group group);
-
 }
