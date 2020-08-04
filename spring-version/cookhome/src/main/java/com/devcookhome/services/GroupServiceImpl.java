@@ -11,7 +11,11 @@ public class GroupServiceImpl implements GroupService {
     @Autowired
   	private GroupRepository repository;	
 
-    public List<Group> findAll(){
+    public Iterable<Group> findAll(){
         return repository.findAll();
+    }
+
+    public Group save(Group group){
+    	return repository.save(group);
     }
 }

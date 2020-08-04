@@ -4,5 +4,8 @@ import java.util.List;
 import com.devcookhome.model.Group;
 
 public interface GroupService {
-    List<Group> findAll();
+    Iterable<Group> findAll();
+
+    Group save(Group group);
+
 }
