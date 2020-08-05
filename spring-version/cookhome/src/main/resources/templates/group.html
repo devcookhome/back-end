@@ -9,7 +9,7 @@
 	<div>
 		<header>
 			<nav>
-				<a href='/group/new'>Novo Grupo</a>
+				<a id='botao' href='/group/new'>Novo Grupo</a>
 			</nav>
 		</header>
 	</div>
@@ -17,7 +17,10 @@
 	<table>
 		<th:block th:each="group : ${list}">
 			<tr>
-				<td th:text="${group.name}">...</td>
+				<td th:text="${group.name}">...
+					<input type="button" value="Editar" onclick="location.href = '/group/edit/${group.id}'"/>
+					<input type="button" value="Apagar"/>
+				</td>
 			</tr>
 	</th:block>
 </table>

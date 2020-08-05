@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CookHome</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+<h1>Editar grupo</h1>
+	<form method='put' action='group/' id='form'>
+		<label for='rename'>Escreva o novo nome:</label>
+		<input type='text' id='edit' name='name'/>
+		<input type='submit' value='Concluir' onclick="teste1()"/>
+		<input type='button' value='Cancelar' onclick='history.go(-1)'/>
+	</form>
+</body>
+	<script type='text/javascript'>
+		var edit = document.getElementById('edit');
+		console.log(edit);
+		function teste1(){
+			alert(edit.value);
+		}
+		var form = document.getElementById('form');
+	</script>
+</html>

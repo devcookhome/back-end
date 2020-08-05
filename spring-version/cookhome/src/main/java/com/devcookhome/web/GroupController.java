@@ -39,5 +39,9 @@ public class GroupController {
 		model.addAttribute("list", service.findAll());
 		return "newgroupsucess";
 	}
-
+	@GetMapping("/group/editgroup")
+	public String groupEdit(Model model) {
+		model.addAttribute("list", service.findAll());
+		return "editgroup";
+	}
 }
