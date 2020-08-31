@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CookHome</title>
+	<meta charset='utf-8'>
+</head>
+
+<body>
+	<div>
+		<header>
+			<nav>
+				<a id='botao' href='/group/new'>Novo Grupo</a>
+			</nav>
+		</header>
+	</div>
+	<h1>Grupos</h1>
+	<table>
+		<th:block th:each="group : ${list}">
+			<tr>
+				<td th:text="${group.name}">...
+					<input type="button" value="Editar" onclick="location.href = '/group/edit/${group.id}'"/>
+					<input type="button" value="Apagar"/>
+				</td>
+			</tr>
+	</th:block>
+</table>
+<input type='button' value='Voltar' onClick='history.go(-1)'>
+</body>
+</html>
