@@ -18,4 +18,8 @@ public class GroupServiceImpl implements GroupService {
     public Group save(Group group){
     	return repository.save(group);
     }
+
+    public Group findById(Long id){
+    	return repository.findById(id).get();
+    }
 }
