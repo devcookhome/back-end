@@ -3,10 +3,8 @@ package com.devcookhome.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import com.devcookhome.services.GroupService;
 import com.devcookhome.model.Group;
 
@@ -39,9 +37,24 @@ public class GroupController {
 		model.addAttribute("list", service.findAll());
 		return "newgroupsucess";
 	}
-	@GetMapping("/group/editgroup")
-	public String groupEdit(Model model) {
-		model.addAttribute("list", service.findAll());
+	@GetMapping("/group/edit/{id}")
+	public String groupEdit(Model model, @PathVariable("id")Long id) {
+		Group group = service.findById(id);
+		model.addAttribute("group", group);
 		return "editgroup";
+	}
+
+	@PutMapping("/group/edit/{id}")
+	public ModelAndView groupEdit(Model model, @PathVariable("id")Long id, Group groupUpdate) {
+		Group group = service.findById(id);
+		group.setName(groupUpdate.getName());
+		service.save(group);
+		return new ModelAndView("redirect: group/edit/sucess");
+	}
+
+	@GetMapping("/group/edit/sucess") // Se der certo a edição, sera redirecionado para este link
+	public String editGroupSucess(Model model) {
+		model.addAttribute("list", service.findAll());
+		return "editgroupsucess";
 	}
 }

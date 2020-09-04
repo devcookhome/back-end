@@ -6,19 +6,13 @@
 </head>
 <body>
 <h1>Editar grupo</h1>
-	<form method='put' action='group/' id='form'>
+	<form method='post' th:action="'/group/edit/'+${group.id}" id='form'>
 		<label for='rename'>Escreva o novo nome:</label>
-		<input type='text' id='edit' name='name'/>
-		<input type='submit' value='Concluir' onclick="teste1()"/>
-		<input type='button' value='Cancelar' onclick='history.go(-1)'/>
+		<input type="hidden" name="_method" value='put'>
+		<input type='text' id='edit' name='name' th:value='${group.name}'/>
+		<input type='submit' value='Concluir'/>
+		<input type="button" valur='Apagar'/>
 	</form>
+	<input type='button' value='Cancelar' onclick='history.go(-1)'/>
 </body>
-	<script type='text/javascript'>
-		var edit = document.getElementById('edit');
-		console.log(edit);
-		function teste1(){
-			alert(edit.value);
-		}
-		var form = document.getElementById('form');
-	</script>
 </html>
