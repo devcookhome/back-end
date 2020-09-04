@@ -11,7 +11,10 @@
 		<input type="hidden" name="_method" value='put'>
 		<input type='text' id='edit' name='name' th:value='${group.name}'/>
 		<input type='submit' value='Concluir'/>
-		<input type="button" valur='Apagar'/>
+		<form method='post'>
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value='Apagar'/>
+		</form>
 	</form>
 	<input type='button' value='Cancelar' onclick='history.go(-1)'/>
 </body>

@@ -49,7 +49,7 @@ public class GroupController {
 		Group group = service.findById(id);
 		group.setName(groupUpdate.getName());
 		service.save(group);
-		return new ModelAndView("redirect: group/edit/sucess");
+		return new ModelAndView("redirect:/group/edit/sucess");
 	}
 
 	@GetMapping("/group/edit/sucess") // Se der certo a edição, sera redirecionado para este link
@@ -57,4 +57,18 @@ public class GroupController {
 		model.addAttribute("list", service.findAll());
 		return "editgroupsucess";
 	}
+
+	/*@DeleteMapping("/group/edit/{id}")
+	public ModelAndView groupDelete(Model model, @PathVariable("id")Long id, Group groupDelete) {
+		Group group = service.findById(id);
+		group.setName(groupDelete.getName());
+		service.delete(group);
+		return new ModelAndView("redirect:/group/delete/sucess");
+	}
+
+	@GetMapping("/group/delete/sucess") // Se der certo a exclusão, sera redirecionado para este link
+	public String deleteGroupSucess(Model model) {
+		model.addAttribute("list", service.findAll());
+		return "deletegroupsucess";
+	}*/
 }

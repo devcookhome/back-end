@@ -9,4 +9,6 @@ public interface GroupService {
     Group save(Group group);
 
     Group findById(Long id);
+
+    /*Group delete(Group group);*/
 }

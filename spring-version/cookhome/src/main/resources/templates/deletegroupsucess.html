@@ -4,12 +4,12 @@
 		<title>CookHome</title>
 		<meta charset='utf-8'>
 	</head>
-	<body><h1>Grupo alterado com sucesso!</h1>
+	<body><h1>Grupo excluido com sucesso!</h1>
 		<table>
 			<th:block th:each="group : ${list}">
 				<tr>
 					<td th:text="${group.name}">...</td>
-					<td><a th:href="'/group/edit/'+${group.id}">Editar | Apagar</a></td>
+					<td><a th:href="'/group/edit/'+${group.id}">Editar</a></td>
 				</tr>
 			</th:block>
 		</table>

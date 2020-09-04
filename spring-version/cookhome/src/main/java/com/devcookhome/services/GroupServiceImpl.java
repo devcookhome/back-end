@@ -22,4 +22,8 @@ public class GroupServiceImpl implements GroupService {
     public Group findById(Long id){
     	return repository.findById(id).get();
     }
+
+    /*public Group delete(Group group){
+        return repository.delete(group);*/
+    
 }

@@ -18,10 +18,12 @@
 		<th:block th:each="group : ${list}">
 			<tr>
 				<td th:text="${group.name}">...</td>
-				<td><a th:href="'/group/edit/'+${group.id}">Editar</a></td>
+				<td><a th:href="'/group/edit/'+${group.id}">Editar | Apagar</a></td>
 			</tr>
 	</th:block>
 </table>
 <input type='button' value='Voltar' onClick='history.go(-1)'>
 </body>
+<script type="text/javascript">
+</script>
 </html>
