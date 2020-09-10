@@ -23,7 +23,7 @@ public class GroupServiceImpl implements GroupService {
     	return repository.findById(id).get();
     }
 
-    /*public Group delete(Group group){
-        return repository.delete(group);*/
-    
+    public void delete(Group group){
+      repository.delete(group);
+    }
 }

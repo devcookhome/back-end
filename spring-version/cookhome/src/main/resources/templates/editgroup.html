@@ -12,10 +12,10 @@
 		<input type="hidden" name="_method" value='put'>
 		<input type='text' id='edit' name='name' th:value='${group.name}'/>
 		<input type='submit' value='Concluir'/>
-		<form method='post'>
-			<input type="hidden" name="_method" value="delete">
-			<input type="submit" value='Apagar'/>
-		</form>
+	</form>
+	<form method='post'>
+		<input type="hidden" name="_method" value="delete">
+		<input type="submit" value='Apagar'/>
 	</form>
 	<input type='button' value='Cancelar' onclick='history.go(-1)'/></br>
 	<span id='errormensage' style='color: rgb(201, 46, 46)'></span>

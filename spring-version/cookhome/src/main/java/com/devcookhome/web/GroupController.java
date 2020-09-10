@@ -62,7 +62,7 @@ public class GroupController {
 		return "editgroupsucess";
 	}
 
-	/*@DeleteMapping("/group/edit/{id}")
+	@DeleteMapping("/group/edit/{id}")
 	public ModelAndView groupDelete(Model model, @PathVariable("id")Long id, Group groupDelete) {
 		Group group = service.findById(id);
 		group.setName(groupDelete.getName());
@@ -74,5 +74,5 @@ public class GroupController {
 	public String deleteGroupSucess(Model model) {
 		model.addAttribute("list", service.findAll());
 		return "deletegroupsucess";
-	}*/
+	}
 }
