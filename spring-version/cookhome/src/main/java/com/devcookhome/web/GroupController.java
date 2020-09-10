@@ -46,10 +46,14 @@ public class GroupController {
 
 	@PutMapping("/group/edit/{id}")
 	public ModelAndView groupEdit(Model model, @PathVariable("id")Long id, Group groupUpdate) {
-		Group group = service.findById(id);
-		group.setName(groupUpdate.getName());
-		service.save(group);
-		return new ModelAndView("redirect:/group/edit/sucess");
+		try{
+			Group group = service.findById(id);
+			group.setName(groupUpdate.getName());
+			service.save(group);
+			return new ModelAndView("redirect:/group/edit/sucess");
+		}catch(Exception ex){
+			return new ModelAndView("redirect:/group/edit/" + id + "?error=true");
+		}
 	}
 
 	@GetMapping("/group/edit/sucess") // Se der certo a edição, sera redirecionado para este link

@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Editar grupo</h1>
+	<p id='error'></p>
 	<form method='post' th:action="'/group/edit/'+${group.id}" id='form'>
 		<label for='rename'>Escreva o novo nome:</label>
 		<input type="hidden" name="_method" value='put'>
@@ -16,6 +17,13 @@
 			<input type="submit" value='Apagar'/>
 		</form>
 	</form>
-	<input type='button' value='Cancelar' onclick='history.go(-1)'/>
+	<input type='button' value='Cancelar' onclick='history.go(-1)'/></br>
+	<span id='errormensage' style='color: rgb(201, 46, 46)'></span>
 </body>
+<script type='text/javascript'>
+	var url = location.href.indexOf('error=true')>-1;
+	if (url) {	
+		document.getElementById('errormensage').innerHTML = 'Erro ao salvar'
+	}
+</script>
 </html>
