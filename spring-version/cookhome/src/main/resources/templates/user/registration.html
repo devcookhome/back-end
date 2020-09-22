@@ -1,5 +1,24 @@
 <html>
+	<head>
+		<title>CookHome</title>
+		<meta charset='utf-8'>
+	</head>
 <body>
-    abcde
+    <h1>Registrar-se</h1>
+    <p id='error'>
+    	<form action='/user' method="post">
+    		<label>Nome:</label></br>
+    		<input type="text" name="name"></br>
+    		<label>Usuário:</label></br>
+    		<input type="text" name="username"></br>
+    		<label>Senha:</label></br>
+    		<input type="password" name="password"></br>
+    		<label>Repita a senha:</label></br>
+    		<input type="password" name="repeatpassword"></br>
+    		<label>E-mail:</label></br>
+    		<input type="text" name="email"></br></br>
+    		<input type="submit" name="registrar" value="Registrar">
+    	</form>
+    </p>
 </body>
 </html>

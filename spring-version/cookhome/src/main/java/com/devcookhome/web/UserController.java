@@ -16,4 +16,11 @@ public class UserController {
         model.addAttribute("user", user);
         return "user/registration";
     }
+
+    @GetMapping("/user/login")
+    public String showLoginForm(WebRequest request, Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "user/login";
+    }
 }
