@@ -3,8 +3,10 @@ package com.devcookhome.model;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.GenerationType;
 
+@Table(name = "user")
 @javax.persistence.Entity(name = "user")
 public class User{
 
@@ -13,15 +15,16 @@ public class User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String name;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String userName;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
-    @Column(nullable = false)
+   /* @Column(nullable = false)
     private String matchingPassword;
-    @Column(nullable = false)
+    */
+    @Column(nullable = true)
     private String email;
 
     public String getName() {
