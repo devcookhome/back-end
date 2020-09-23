@@ -18,9 +18,9 @@ public class User{
     @Column(nullable = true)
     private String name;
     @Column(nullable = true)
-    private String userName;
+    private String username;
     @Column(nullable = true)
-    private String password;
+    private String user_password;
    /* @Column(nullable = false)
     private String matchingPassword;
     */
@@ -35,29 +35,29 @@ public class User{
         this.name = name;
     }
 
-    public String getUserName() {
-        return this.userName;
+    public String getUsername() {
+        return this.username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return this.password;
+        return this.user_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String user_password) {
+        this.user_password = user_password;
     }
 
-    public String getMatchingPassword() {
+    /*public String getMatchingPassword() {
         return this.matchingPassword;
     }
 
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
-    }
+    }*/
 
     public String getEmail() {
         return this.email;
