@@ -15,16 +15,22 @@ public class LoginController {
     @Autowired
 	private UserService service;
 
-    @GetMapping("/user/login")
+   @GetMapping("/user/login")
     public String showLoginForm(WebRequest request, Model model) {
         return "user/login";
     }
-
-    @PostMapping("/user/login")
-	public ModelAndView showLoginForm(Model model, WebRequest request) {
-        User username = service.findByUsername(username);
-        service.findByUsername(username);
-		return new ModelAndView("user/login");
-	}
+    
+    @PostMapping("/user/login/{username}")
+	public ModelAndView showLoginForm(Model model, @PathVariable("username") User username) {
+		User user = service.findByUsername(username);
+		user.setUsername(user.getUsername());
+        System.out.println(user);
+        return new ModelAndView("redirect:/user/login/sucess");
+    }
+    
+    @GetMapping("/user/login/sucess")
+    public String loginsucess (WebRequest request, Model model) {
+        return "user/loginsucess";
+    }
 
 }

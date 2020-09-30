@@ -4,7 +4,6 @@ import com.devcookhome.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.devcookhome.dao.UserRepository;
 import org.springframework.stereotype.Service;
-import com.devcookhome.services.DigestService;
 
 @Service
 public class UserServiceImpl implements UserService {

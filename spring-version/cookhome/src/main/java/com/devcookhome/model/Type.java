@@ -1,6 +1,5 @@
 package com.devcookhome.model;
 import javax.persistence.Column;
-import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
