@@ -21,9 +21,6 @@ public class User{
     private String username;
     @Column(nullable = true)
     private String user_password;
-   /* @Column(nullable = false)
-    private String matchingPassword;
-    */
     @Column(nullable = true)
     private String email;
 
@@ -50,14 +47,6 @@ public class User{
     public void setPassword(String user_password) {
         this.user_password = user_password;
     }
-
-    /*public String getMatchingPassword() {
-        return this.matchingPassword;
-    }
-
-    public void setMatchingPassword(String matchingPassword) {
-        this.matchingPassword = matchingPassword;
-    }*/
 
     public String getEmail() {
         return this.email;

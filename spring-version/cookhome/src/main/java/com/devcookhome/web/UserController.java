@@ -4,7 +4,6 @@ import com.devcookhome.model.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.*;
 import com.devcookhome.services.UserService;
@@ -17,7 +16,6 @@ public class UserController {
 
     @GetMapping("/user/registration")
     public String showRegistrationForm(Model model) {
-        //User user = new User();
         model.addAttribute("user");
         return "user/registration";
     }
@@ -38,10 +36,4 @@ public class UserController {
             return "user/registrationsucess";
     }
 
-    @GetMapping("/user/login")
-    public String showLoginForm(WebRequest request, Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "user/login";
-    }
 }

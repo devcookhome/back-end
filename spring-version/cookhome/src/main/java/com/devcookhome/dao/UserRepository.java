@@ -5,5 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.devcookhome.model.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, String> {
+
+	Object findByUsername(User username);
 }
