@@ -19,8 +19,8 @@ public class User{
     private String name;
     @Column(nullable = true)
     private String username;
-    @Column(nullable = true)
-    private String user_password;
+    @Column(nullable = true, name = "user_password")
+    private String userPassword;
     @Column(nullable = true)
     private String email;
 
@@ -41,11 +41,11 @@ public class User{
     }
 
     public String getPassword() {
-        return this.user_password;
+        return this.userPassword;
     }
 
-    public void setPassword(String user_password) {
-        this.user_password = user_password;
+    public void setPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public String getEmail() {

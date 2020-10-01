@@ -1,7 +1,9 @@
 package com.devcookhome.web;
 
-import com.devcookhome.model.User;
+import javax.servlet.http.HttpSession;
 
+import com.devcookhome.model.LoginDTO;
+import com.devcookhome.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.context.request.WebRequest;
@@ -15,22 +17,23 @@ public class LoginController {
     @Autowired
 	private UserService service;
 
-   @GetMapping("/user/login")
+    @GetMapping("/user/login")
     public String showLoginForm(WebRequest request, Model model) {
         return "user/login";
     }
     
-    @PostMapping("/user/login/{username}")
-	public ModelAndView showLoginForm(Model model, @PathVariable("username") User username) {
-		User user = service.findByUsername(username);
-		user.setUsername(user.getUsername());
-        System.out.println(user);
-        return new ModelAndView("redirect:/user/login/sucess");
-    }
-    
+    @PostMapping("/user/login")
+	public ModelAndView save(HttpSession session, Model model, LoginDTO login) {
+        User user = service.findByUsername(login);
+        if(user != null){
+            session.setAttribute("username", user.getName());
+            return new ModelAndView("redirect:/home");
+        }
+        return new ModelAndView("redirect:/user/login/?error=true");
+	}
+
     @GetMapping("/user/login/sucess")
     public String loginsucess (WebRequest request, Model model) {
         return "user/loginsucess";
     }
-
 }
