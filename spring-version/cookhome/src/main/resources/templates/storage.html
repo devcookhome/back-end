@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -9,14 +10,13 @@
 			<div class="linha lin1" id="wrap">
 				<div class="linha" id="wrapcabecalho">
 					<header id="cabecalho">
-						<div class="coluna col8">
+						<div class="coluna col10">
 							<h1 id="logo">CookHome</h1>
 							<div th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
 						</div>
-						<div class="coluna col4">	
+						<div class="coluna col2">	
 							<ul class="inline">
-								<li><a href="user/login" class="login">Entrar</a></li>
-								<li><a href="/user/registration" class="register">Cadastre-se</a></li>
+								<li><a href="user/login" class="login">Logout</a></li>
 							</ul>
 						</div>	
 						<div class="linha">	

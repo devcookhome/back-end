@@ -1,0 +1,122 @@
+/*grid 960px*/
+.linha{
+	width: 960px;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 5px 0;
+}
+.coluna{
+	padding:0 10px;
+	float: left;
+}
+.lin1{
+	background-color: #FFA500;
+}
+.lin2{
+	background-color: #FFFFFF;
+}
+.col1{
+	width: 60px;
+}
+.col2{
+	width: 140px;
+}
+.col3{
+	width: 220px;
+}
+.col4{
+	width: 300px;
+}
+.col5{
+	width: 380px;
+}
+.col6{
+	width: 460px;
+}
+.col7{
+	width: 540px;
+}
+.col8{
+	width: 620px;
+}
+.col9{
+	width: 700px;
+}
+.col10{
+	width: 780px;
+}
+.col11{
+	width: 860px;
+}
+.col12{
+	width: 940px;
+}
+
+/*reutilizáveis*/
+
+#wrapcabecalho{
+	background: #FFFFFF;
+}
+#wrap{
+	width: 960px;
+	margin: auto;
+	padding: 10px 20px;
+}
+#footer_wrap{
+	width: 960px;
+	margin: auto;
+	padding: 0px 20px 10px 20px;
+	text-align: center;
+}
+#description{
+	clear: both;
+}
+#logo{
+	font: ;
+}
+ul.inline li{
+	display: inline-block;
+	list-style: none;
+}
+ul.inline li:last-child{
+	margin-right: 0px;
+}
+body{
+	background-color: #FFA500;
+}
+header nav ul{
+	padding-left: 0px;
+}
+.menu{
+	font-size: 20px;
+	text-decoration: none;
+	padding: 15px 30px;
+	background: url('../img/button_001.jpg') no-repeat left center;
+	border-radius: 3px;
+	color: #CD0000;
+}
+.menu:hover, .menu:active{
+	font-size: 20px;
+	text-align: right;
+	text-decoration: underline;
+	padding: 15px 30px;
+	background: url('../img/button_002.jpg') no-repeat left center;
+	border-radius: 3px;
+	color: #CD0000;
+}
+.login{
+	font-size: 18px;
+	text-decoration: none;
+	background: url('../img/icon_login01.png') no-repeat right;
+	border-radius: 3px;
+	color: #CD0000;
+	padding: 15px 25px;
+}
+.register{
+	font-size: 18px;
+	text-decoration: none;
+	background: url('../img/icon_register01.png') no-repeat right center;
+	border-radius: 3px;
+	color: #CD0000;
+	padding: 15px 25px;
+}
