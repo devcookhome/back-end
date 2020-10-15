@@ -1,11 +1,22 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>Cookhome</title>
-	<meta charset="utf-8">
-</head>
+	<head>
+		<title>CookHome</title>
+		<meta charset='utf-8'>
+	</head>
 <body>
-	<h1>Usuário cadastrado com sucesso!</h1>
-	<input type='button' value='Voltar' onClick='location.href="/home"'>
+    <h1>Entrar</h1>
+    <p id='error'>
+    	<form method="post">
+    		<label>Usuário:</label></br>
+    		<input type="text" name="username" required="required" placeholder="Digite seu nome de usuário"></br>
+    		<label>Senha:</label></br>
+    		<input type="password" name="password" required="required" placeholder="Informe sua senha"></br></br>
+    		<input type="submit" name="login" value="Entrar">
+            <a href="">Esqueceu a senha?</a>
+    	</form>
+	</p>
 </body>
+<script type="text/javascript">
+	window.alert('Usuário cadastrado com sucesso.')
+</script>
 </html>
