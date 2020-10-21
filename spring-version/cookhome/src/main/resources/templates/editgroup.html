@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>CookHome</title>
-	<meta charset='utf-8'>
-</head>
+	<head>
+		<title>CookHome</title>
+		<meta charset='utf-8'>
+		<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
+	</head>
 <body>
-<h1>Editar grupo</h1>
-	<p id='error'></p>
-	<form method='post' th:action="'/group/edit/'+${group.id}" id='form'>
-		<label for='rename'>Escreva o novo nome:</label>
-		<input type="hidden" name="_method" value='put'>
-		<input type='text' id='edit' name='name' th:value='${group.name}'/>
-		<input type='submit' value='Concluir'/>
-	</form>
-	<form method='post'>
-		<input type="hidden" name="_method" value="delete">
-		<input type="submit" value='Apagar'/>
-	</form>
-	<input type='button' value='Cancelar' onclick='location.href="/group"'/></br>
-	<span id='errormensage' style='color: rgb(201, 46, 46)'></span>
+	<div class="linha lin1" id="wrap">
+		<div class="linha" id="wrapcabecalho">
+			<header>
+					<div class="coluna col9">
+						<h1 id="logo">CookHome</h1>
+					</div>
+					<div class="coluna col3" th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
+				<div class="linha">
+					<div class="coluna col12">
+						<nav>
+							<ul class="inline">
+								<li><strong><a href="/group" class="menu">+Grupos</a></strong></li>
+								<li><strong><a href="/recipe" class="menu">+Receitas</a></strong></li>
+								<li><strong><a href="/storage" class="menu">+Dispensa</a></strong></li>
+							</ul>
+						</nav>
+					</div>	
+				</div>
+			</header>
+		</div>
+		<div class="linha lin1">
+			<div class="linha lin2">
+				<div class="coluna col12 pagebutton formulario">
+					<h1>Editar grupo</h1>
+					<p id='error'></p>
+						<form method='post' th:action="'/group/edit/'+${group.id}" id='form'>
+							<label for='rename'>Escreva o novo nome:</label>
+							<input type="hidden" name="_method" value='put'>
+							<input type='text' id='edit' name='name' th:value='${group.name}'/>
+							<input class="botao" type='submit' value='Concluir'/>
+							<input type="hidden" name="_method" value="delete">
+							<input class="botao" type="submit" value='Apagar'/>
+						</form>
+						<input class="pagebutton botao" type='button' value='Cancelar' onclick='location.href="/group"'/></br>
+						<span id='errormensage' style='color: rgb(201, 46, 46)'></span>
+				</div>	
+			</div>
+		</div>	
+	</div>	
 </body>
 <script type='text/javascript'>
 	var url = location.href.indexOf('error=true')>-1;
