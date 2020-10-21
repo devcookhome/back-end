@@ -5,45 +5,50 @@
 		<meta charset='utf-8'>
 		<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	</head>
-	<body>
-		<div class="linha lin1" id="wrap">
-			<div class="linha lin2" id="wrapcabecalho">
-				<header>
-						<div class="coluna col9">
+<body>
+	<div class="linha lin1" id="wrap">
+		<div class="linha lin2" id="wrapcabecalho">
+			<header>
+					<div class="coluna col9">
 							<h1 id="logo">CookHome</h1>
-						</div>
-						<div class="coluna col3" th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
-					<div class="linha">
-						<div class="coluna col12">
-							<nav>
-								<ul class="inline">
-									<li><strong><a href="/group" class="menu">+Grupos</a></strong></li>
-									<li><strong><a href="/recipe" class="menu">+Receitas</a></strong></li>
-									<li><strong><a href="/storage" class="menu">+Dispensa</a></strong></li>
-								</ul>
-							</nav>
-						</div>	
 					</div>
-				</header>
-			</div>
-			<div class="linha lin1">
-				<div class="linha lin2">
-					<div class="coluna col12 formulario">
-						<p id='error'>
-							<h1>Criar novo grupo</h1>
-							<form action='/group' method='post'>
-								<label for='name'>Digite o nome do novo grupo:</label>
-								<input type='text' name='name'required>
-								<input class="botao" type='submit' name='create' value='Criar'>
-								<input class="botao" type='button' value='Cancelar' onClick='location.href="/group"'>
-							</form>	
-						</p>
-					</div>				
-					<span id='errormensage' style='color: #F00'></span>
+					<div class="coluna col3" th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
+				<div class="linha">
+					<div class="coluna col12">
+						<nav>
+							<ul class="inline">
+								<li><strong><a href="/group" class="menu">+Grupos</a></strong></li>
+								<li><strong><a href="/recipe" class="menu">+Receitas</a></strong></li>
+								<li><strong><a href="/storage" class="menu">+Dispensa</a></strong></li>
+							</ul>
+						</nav>
+					</div>	
 				</div>
+			</header>
+		</div>
+		<div class="linha lin1">
+			<div class="linha lin2">
+				<div class="coluna col12 formulario">
+					<p id='error'>
+						<h1>Criar novo grupo</h1>
+						<form action='/group' method='post'>
+							<label for='name'>Digite o nome do novo grupo:</label>
+							<input type='text' name='name'required>
+							<input class="botao" type='submit' name='create' value='Criar'>
+							<input class="botao" type='button' value='Cancelar' onClick='location.href="/group"'>
+						</form>	
+					</p>
+				</div>				
+				<span id='errormensage' style='color: #F00'></span>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
+	<div class="linha lin1" id="footer_wrap">
+		<div class="coluna col12 lin2">
+			<footer>Todos direitos reservados pela devcookhome &copy;2020</footer>
+		</div>
+	</div>
 	<script type='text/javascript'>
 		var url = location.href.indexOf('error=true')>-1;
 		if (url) {
