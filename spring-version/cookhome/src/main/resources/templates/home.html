@@ -40,8 +40,9 @@
 					</div>
 					<div class="linha lin2">
 						<div class="coluna col6">
+							<th:block th:each="recipe : ${recipes}">
 							<nav>
-								<h1>Biscoito de Banana com Aveita</h1>
+								<h1 th:text="${recipe.name}"></h1>
 								<h5>X ingredientes na dispensa</h5>
 								<div class="flip-card">
 									<div class="flip-card-inner">
@@ -53,27 +54,7 @@
 									</div>
 								</div>
 							</nav>
-						</div>
-						<div class="coluna col6">
-							<nav>
-								<h1>Panqueca de Banana</h1>
-								<h5>X ingredientes na dispensa</h5>
-								<img src="../img/panqueca_banana.jpg">
-							</nav>
-							<table>
-								<th:block th:each="recipe : ${recipes}">
-									<tr>
-										<td th:text="${recipe.name}">...</td>
-									</tr>
-							</th:block>
-							</table>
-						</div>
-						<!--<div class="coluna col4">
-							<nav>
-								<h1>Massa de Pizza</h1>
-								<h5>X ingredientes na dispensa</h5>
-								<img src="../img/massa_pizza.jpg">-->
-							</nav>
+						</th:block>
 						</div>
 					</div>
 				</div>
