@@ -1,7 +1,5 @@
 package com.devcookhome.services;
 
-import java.util.List;
-
 import com.devcookhome.model.User;
 import com.devcookhome.model.LoginDTO;
 
