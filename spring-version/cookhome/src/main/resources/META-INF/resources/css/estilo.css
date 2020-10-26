@@ -130,7 +130,7 @@ header nav ul{
 	background: url('../img/icon_login01.png') no-repeat right;
 	border-radius: 3px;
 	color: #CD0000;
-	padding: 15px 25px;
+	padding: 0px 25px;
 }
 .register{
 	font-size: 18px;
@@ -138,7 +138,7 @@ header nav ul{
 	background: url('../img/icon_register01.png') no-repeat right center;
 	border-radius: 3px;
 	color: #CD0000;
-	padding: 15px 25px;
+	padding: 0px 25px;
 }
 img{
 	max-width: 100%;
