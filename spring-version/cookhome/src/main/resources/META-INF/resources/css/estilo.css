@@ -75,6 +75,9 @@
 #logo{
 	font: ;
 }
+a, a:hover{
+	cursor: pointer;
+}
 a.botao, input.botao{
 	background: #FFFFFF;
 	color: #CD0000;

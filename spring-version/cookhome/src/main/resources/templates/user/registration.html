@@ -2,25 +2,64 @@
 	<head>
 		<title>CookHome</title>
 		<meta charset='utf-8'>
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	</head>
 <body>
-    <h1>Registrar-se</h1>
-    <p id='error'>
-    	<form method="post" name="form">
-    		<label for="name">Nome:</label></br>
-    		<input type="text" name="name" required placeholder="Digite seu nome"></br>
-    		<label for="username">Usuário:</label></br>
-    		<input type="text" name="username" required placeholder="Digite seu nome de usuário"></br>
-    		<label for="password">Senha:</label></br>
-    		<input type="password" name="password" required placeholder="Escolha uma senha" id="password"></br>
-    		<label>Repita a senha:</label></br>
-    		<input type="password" name="repeatpassword" required placeholder="Confirme sua senha" id="repeatpassword"></br>
-    		<label for="email">E-mail:</label></br>
-    		<input type="email" name="email" required placeholder="Insira seu e-mail"></br></br>
-    		<input type="submit" name="registrar" value="Registrar">
-    	</form>
-    </p>
-    <span id='errormensage' style='color: #F00'></span>
+    <div class="linha lin1" id="wrap">
+        <div class="linha" id="wrapcabecalho">
+            <header id="cabecalho">
+                <div class="coluna col8">
+                    <h1 id="logo">CookHome</h1>
+                    <div th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
+                </div>
+                <div class="coluna col4">   
+                    <ul class="inline">
+                        <li>
+                            <a onclick='location.href="/user/login"' class="login">Entrar</a>
+                        </li>
+                    </ul>
+                </div>  
+                <div class="linha"> 
+                    <div class="coluna col12">
+                        <nav>
+                            <ul class="botao inline">
+                                <li><strong><a href="/group" class="menu">+Grupos</a></strong></li>
+                                <li><strong><a href="/recipe" class="menu">+Receitas</a></strong></li>
+                                <li><strong><a href="/storage" class="menu">+Dispensa</a></strong></li>
+                            </ul>
+                        </nav>
+                    </div>  
+                </div>      
+            </header>
+        </div>
+        <div id="description" class="linha lin1">
+            <div class="linha lin2">
+                <div class="coluna col12 pagebutton formulario">
+                    <h1>Registrar-se</h1>
+                    <p id='error'>
+                        <form method="post" name="form">
+                            <label for="name">Nome:</label>
+                            <input type="text" name="name" required placeholder="Digite seu nome">
+                            <label for="username">Usuário:</label>
+                            <input type="text" name="username" required placeholder="Digite seu nome de usuário">
+                            <label for="password">Senha:</label>
+                            <input type="password" name="password" required placeholder="Escolha uma senha" id="password">
+                            <label>Repita a senha:</label>
+                            <input type="password" name="repeatpassword" required placeholder="Confirme sua senha" id="repeatpassword">
+                            <label for="email">E-mail:</label>
+                            <input type="email" name="email" required placeholder="Insira seu e-mail">
+                            <div class="linha">
+                                <div class="coluna col12">
+                                    <input class="botao" type="submit" name="registrar" value="Registrar">
+                                </div>
+                            </div>
+                        </form>
+                    </p>
+                    <span id='errormensage' style='color: #F00'></span>
+                </div>
+            </div>
+        </div>    
+    </div>            
 </body>
 <script type="text/javascript">
     var url = location.href.indexOf('error=true')>-1;

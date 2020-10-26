@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>CookHome</title>
-		<meta charset='utf-8'>
-	</head>
-	<body><h1>Grupo excluido com sucesso!</h1>
-		<table>
-			<th:block th:each="group : ${list}">
-				<tr>
-					<td th:text="${group.name}">...</td>
-					<td><a th:href="'/group/edit/'+${group.id}">Editar</a></td>
-				</tr>
-			</th:block>
-		</table>
-		<input type='button' value='Voltar' onClick='location.href="/group"'/>
-	</body>
+<head>
+	<title>CookHome</title>
+	<meta charset='utf-8'>
+	<link rel="stylesheet" type="text/css" href="../../css/estilo.css">
+</head>
+
+<body>
+	<div class="linha lin1" id="wrap">
+		<div class="linha" id="wrapcabecalho">
+			<header>
+					<div class="coluna col9">
+						<h1 id="logo">CookHome</h1>
+					</div>
+					<div class="coluna col3" th:text="${session.username} != null ? 'Ola  ' +${session.username} :'Nao Logado'"></div>
+				<div class="linha">
+					<div class="coluna col12">
+						<nav>
+							<ul class="inline">
+								<li><strong><a href="/group" class="menu">+Grupos</a></strong></li>
+								<li><strong><a href="/recipe" class="menu">+Receitas</a></strong></li>
+								<li><strong><a href="/storage" class="menu">+Dispensa</a></strong></li>
+							</ul>
+						</nav>
+					</div>	
+				</div>
+			</header>
+		</div>
+		<div class="linha lin1">
+			<div class="linha lin2">
+				<div class="linha">
+					<div class="coluna col12">
+						<h2>Grupo removido com sucesso!</h2>
+					</div>		
+				</div>
+				<div class="coluna col12">
+					<h1>Grupos</h1>
+					<table>
+						<th:block th:each="group : ${list}">
+							<tr>
+								<td th:text="${group.name}">...</td>
+								<td><a class="botao" th:href="'/group/edit/'+${group.id}">Editar | Apagar</a></td>
+							</tr>
+					</th:block>
+					</table>
+				</div>
+			</div>
+			<div class="linha lin2">
+				<div class="coluna col12 pagebutton">
+					<nav>		
+						<a class="botao" id='botao' href='/group/new'>Novo Grupo &raquo;</a>
+						<a class="botao" href="/home">Voltar</a>
+					</nav>
+				</div>		
+			</div>
+		</div>
+	</div>
+</body>
+<div class="linha lin1" id="footer_wrap">
+	<div class="coluna col12 lin2">
+		<footer>Todos direitos reservados pela devcookhome &copy;2020</footer>
+	</div>
+</div>
 </html>
