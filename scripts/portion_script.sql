@@ -6,6 +6,8 @@ CREATE TABLE portion(
 
     id INT AUTO_INCREMENT PRIMARY KEY,
 
-    quantity int(2)
+    quantity int(2),
+
+    description VARCHAR(100)
 
 );
