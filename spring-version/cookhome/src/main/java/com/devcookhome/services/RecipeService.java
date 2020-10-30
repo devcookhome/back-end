@@ -1,9 +1,11 @@
 package com.devcookhome.services;
 
+import java.util.List;
+
 import com.devcookhome.model.Recipe;
 
 public interface RecipeService {
-    Iterable<Recipe> findAll();
+    List<Recipe> findAll();
 
     Recipe save(Recipe recipe);
 

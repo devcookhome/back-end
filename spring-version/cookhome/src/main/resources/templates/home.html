@@ -40,7 +40,7 @@
 					</div>
 					<div class="linha lin2">
 						<div class="coluna col6">
-							<th:block th:each="recipe : ${recipes}">
+							<th:block th:each="recipe, recipeStat : ${recipes}" th:unless="${recipeStat.index > 0}">
 							<nav>
 								<h1 th:text="${recipe.name}"></h1>
 								<h5>X ingredientes na dispensa</h5>
